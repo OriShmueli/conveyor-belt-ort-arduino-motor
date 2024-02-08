@@ -1,18 +1,36 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+const int stepX = 2;
+const int dirX = 5;
+const int enPin = 8; //enPin disable/Enable
+//digitalWrite(DirX, HIGH); // set direction, HIGH for clockwise, LOW for anticlockwise
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  pinMode(stepX, OUTPUT);
+  pinMode(dirX, OUTPUT);
+  pinMode(enPin, OUTPUT);
+  Serial.begin(9600);
+  digitalWrite(dirX, LOW);
+  digitalWrite(enPin, LOW);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+   while(Serial.available() > 0){
+    
+    //Serial.print("Avaliable");
+
+    char inByte = Serial.read();
+    if(inByte == '1'){
+      digitalWrite(enPin, LOW);
+      digitalWrite(stepX,HIGH);
+      delayMicroseconds(500);
+      digitalWrite(stepX,LOW); 
+      delayMicroseconds(500);
+    }
+    if(inByte == '0'){
+
+    }
+
+  }
 }
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
-}

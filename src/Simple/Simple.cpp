@@ -1,47 +1,5 @@
 #include <Arduino.h>
 
-class ReadMessage{
-public:
-  void ReadData(){
-    if(Serial.available() > 0){
-      //trigger call back
-    }
-  }
-};
-
-class HandShake{
-
-public:
-  void Update(){
-
-  }
-};
-
-class SendMessageLowLevel{
-public:
-  void Send(char* message){
-    //trigger call back
-    Serial.write(message);
-  }
-};
-
-class ConnectionStates {
-
-public:
-  void Update(ConnectionStatus connectionStatus){
-    switch (connectionStatus)
-    {
-    case DISCONNECTED:
-      /* code */
-      break;
-    
-    default:
-      break;
-    }
-  }
-};
-
-
 const int stepX = 2;
 const int dirX = 5;
 const int enPin = 8; //enPin disable/Enable
@@ -149,8 +107,4 @@ void loop() {
   }
 
   
-}
-
-void HandShake(){
-
 }
